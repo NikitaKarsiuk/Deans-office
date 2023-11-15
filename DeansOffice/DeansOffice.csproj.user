@@ -1,0 +1,91 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup />
+  <ItemGroup>
+    <ApplicationDefinition Update="App.xaml">
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="Windows\Faculty.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Windows\Grade.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Windows\GradeList.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Windows\Group.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Windows\Student.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Windows\StudentAvarageGrades.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Windows\StudentExplusionList.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Windows\StudentList.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Windows\Subject.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Windows\SubjectAvarageGrades.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Windows\SubjectGroupList.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Windows\SubjectList.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="MainWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Styles\TextBox.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Windows\Faculty.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Windows\Grade.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Windows\GradeList.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Windows\Group.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Windows\Student.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Windows\StudentAvarageGrades.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Windows\StudentExplusionList.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Windows\StudentList.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Windows\Subject.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Windows\SubjectAvarageGrades.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Windows\SubjectGroupList.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Windows\SubjectList.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+</Project>

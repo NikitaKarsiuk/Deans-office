@@ -1,0 +1,118 @@
+﻿<Window x:Class="DeansOffice.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DeansOffice" xmlns:converters="clr-namespace:DeansOffice.Converters"
+        mc:Ignorable="d"
+        Title="Деканат института" Height="550" Width="1000"
+        ResizeMode="NoResize">
+    <Window.Resources>
+        <converters:FacultyConverter x:Key="FacultyConverter" />
+        <converters:GroupConverter x:Key="GroupConverter" />
+    </Window.Resources>
+    
+    <Grid Style="{StaticResource Grid}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <TabControl Style="{StaticResource TabControl}">
+            <TabItem Header="Кафедра" x:Name="DepartmentTabItem" MouseUp="FillTabItem_MouseUp" Style="{StaticResource AdditionalTabItem}">
+                <Grid Style="{StaticResource Grid}">
+                    <TabControl Style="{StaticResource AdditionalTabControl}">
+                        <TabItem Header="Факультет" x:Name="FacultyTabItem" Style="{StaticResource AdditionalTabItem}" MouseUp="FillTabItem_MouseUp" Margin="0, -4, 0 ,0">
+                            <Grid Margin="0" Height="500" Width="870">
+                                <DataGrid Name="facultyDataGrid" Margin="10,10,30,70" AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False">
+                                    <DataGrid.Columns>
+                                        <DataGridTextColumn Header="Id" Binding="{Binding Id}" Visibility="Hidden" />
+                                        <DataGridTextColumn Header="Название" Binding="{Binding Name}" />
+                                        <DataGridTemplateColumn Header="Средний балл">
+                                            <DataGridTemplateColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <Button Click="OpenStudentAvarageGradesWindow_Click">Студенты</Button>
+                                                </DataTemplate>
+                                            </DataGridTemplateColumn.CellTemplate>
+                                        </DataGridTemplateColumn>
+                                        <DataGridTemplateColumn Header="Список на отчисление">
+                                            <DataGridTemplateColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <Button Click="OpenStudentExplusionListWindow_Click">Открыть</Button>
+                                                </DataTemplate>
+                                            </DataGridTemplateColumn.CellTemplate>
+                                        </DataGridTemplateColumn>
+                                    </DataGrid.Columns>
+                                </DataGrid>
+                                <Button x:Name="FacultyAddButton" Content="Добавить" Style="{StaticResource Button}" Margin="10,409, 757,0" Click="FacultyAddButton_Click"></Button>
+                                <Button x:Name="FacultyChangeButton" Content="Изменить" Style="{StaticResource Button}" Margin="10,409, 537,0" Click="FacultyChangeButton_Click"></Button>
+                                <Button x:Name="FacultyDeleteButton" Content="Удалить" Style="{StaticResource Button}" Margin="10,409, 317,0" Click="FacultyDeleteButton_Click"></Button>
+                                
+                            </Grid>
+                        </TabItem>
+                        <TabItem Header="Группа" x:Name="GroupTabItem" Style="{StaticResource AdditionalTabItem}" MouseUp="FillTabItem_MouseUp" Margin="0, -4, 0 ,0">
+                            <Grid Margin="0" Height="500" Width="870">
+                                <DataGrid Name="groupDataGrid" Margin="10,10,30,70" AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False">
+                                    <DataGrid.Columns>
+                                        <DataGridTextColumn Header="Id" Binding="{Binding Id}" Visibility="Hidden" />
+                                        <DataGridTextColumn Header="Название" Binding="{Binding Name}" />
+                                        <DataGridTextColumn Header="Факультет" Binding="{Binding FacultyId, Converter={StaticResource FacultyConverter}, Mode=TwoWay}" />
+                                        <DataGridTemplateColumn Header="Предметы">
+                                            <DataGridTemplateColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <Button Click="OpenSubjectWindow_Click">Предметы</Button>
+                                                </DataTemplate>
+                                            </DataGridTemplateColumn.CellTemplate>
+                                        </DataGridTemplateColumn>
+                                        <DataGridTemplateColumn Header="Список стдуентов">
+                                            <DataGridTemplateColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <Button Click="OpenStudentWindow_Click">Студенты</Button>
+                                                </DataTemplate>
+                                            </DataGridTemplateColumn.CellTemplate>
+                                        </DataGridTemplateColumn>
+                                    </DataGrid.Columns>
+                                </DataGrid>
+                                <Button x:Name="GroupAddButton" Content="Добавить" Style="{StaticResource Button}" Margin="10,409, 757,0" Click="GroupAddButton_Click" ></Button>
+                                <Button x:Name="GroupChangeButton" Content="Изменить" Style="{StaticResource Button}" Margin="10,409, 537,0" Click="GroupChangeButton_Click"></Button>
+                                <Button x:Name="GroupDeleteButton" Content="Удалить" Style="{StaticResource Button}" Margin="10,409, 317,0" Click="GroupDeleteButton_Click"></Button>
+                            </Grid>
+                        </TabItem>
+                        <TabItem Header="Предмет" x:Name="SubjectTabItem" Style="{StaticResource AdditionalTabItem}" MouseUp="FillTabItem_MouseUp" Margin="0, -4, 0 ,0">
+                            <Grid Margin="0" Height="500" Width="870">
+                                <DataGrid Name="subjectDataGrid" Margin="10,10,30,70" AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False">
+                                    <DataGrid.Columns>
+                                        <DataGridTextColumn Header="Id" Binding="{Binding Id}" Visibility="Hidden" />
+                                        <DataGridTextColumn Header="Название" Binding="{Binding Name}" />
+                                    </DataGrid.Columns>
+                                </DataGrid>
+                                <Button x:Name="SubjectAddButton" Content="Добавить" Style="{StaticResource Button}" Margin="10,409, 757,0" Click="SubjectAddButton_Click" ></Button>
+                                <Button x:Name="SubjectChangeButton" Content="Изменить" Style="{StaticResource Button}" Margin="10,409, 537,0" Click="SubjectChangeButton_Click"></Button>
+                                <Button x:Name="SubjectDeleteButton" Content="Удалить" Style="{StaticResource Button}" Margin="10,409, 317,0" Click="SubjectDeleteButton_Click"></Button>
+                                <Button x:Name="AvgGradeOpenWindowButton" Content="Средний балл" Style="{StaticResource Button}" Margin="232,440,-478,30" Click="AvgGradeOpenWindowButton_Click"/>
+                                <Button x:Name="NegativeGradesButton" Content="Неуд. оценки" Style="{StaticResource Button}" Margin="232,440,-257,30" Click="NegativeGradesButton_Click"/>
+                            </Grid>
+                        </TabItem>
+                        <TabItem Header="Студенты" x:Name="StudentTabItem" Style="{StaticResource AdditionalTabItem}" MouseUp="FillTabItem_MouseUp" Margin="0, -4, 0 ,0">
+                            <Grid Margin="0" Height="500" Width="870">
+                                <DataGrid Name="studentDataGrid" Margin="10,10,30,70" AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False">
+                                    <DataGrid.Columns>
+                                        <DataGridTextColumn Header="Id" Binding="{Binding Id}" Visibility="Hidden" />
+                                        <DataGridTextColumn Header="Имя" Binding="{Binding Name}" />
+                                        <DataGridTextColumn Header="Фамилия" Binding="{Binding Surname}" />
+                                        <DataGridTextColumn Header="Отчество" Binding="{Binding Patronymic}" />
+                                        <DataGridTextColumn Header="Группа" Binding="{Binding GroupId, Converter={StaticResource GroupConverter}, Mode=TwoWay}" />
+                                    </DataGrid.Columns>
+                                </DataGrid>
+                                <Button x:Name="StudentAddButton" Content="Добавить" Style="{StaticResource Button}" Margin="10,409, 757,0" Click="StudentAddButton_Click"></Button>
+                                <Button x:Name="StudentChangeButton" Content="Изменить" Style="{StaticResource Button}" Margin="10,409, 537,0" Click="StudentChangeButton_Click"></Button>
+                                <Button x:Name="StudentDeleteButton" Content="Удалить" Style="{StaticResource Button}" Margin="10,409, 317,0" Click="StudentDeleteButton_Click"></Button>
+                            </Grid>
+                        </TabItem>
+                    </TabControl>
+                </Grid>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>
